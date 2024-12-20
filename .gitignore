@@ -1,3 +1,8 @@
+venv/
+model_weights/
+faster_rcnn_prefactored/
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
