@@ -20,7 +20,8 @@ python3 main.py --inference
 
 To train models:
 
-1. Run the main script using the train and test flag:
+1. Run the main script using the train flag:
+2. Include the test flag for evaluation metrics.
 
 ```bash
 python3 main.py --train --test
