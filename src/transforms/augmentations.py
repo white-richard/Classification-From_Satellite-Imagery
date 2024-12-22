@@ -7,7 +7,6 @@ def get_train_transform():
     return A.Compose(
         [
             A.RandomScale(scale_limit=(-0.9, 0.0), p=0.8),
-            A.RandomSizedBBoxSafeCrop(height=360, width=640, p=0.5), # Matched with dataset's resolution
             # A.Resize(height=640, width=360, p=1.0), # Preprocessed by source
             # A.RandomRotate90(p=0.5), # Preprocessed by source
             # A.HorizontalFlip(p=0.5), # Preprocessed by source
