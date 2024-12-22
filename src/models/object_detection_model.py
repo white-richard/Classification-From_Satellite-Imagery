@@ -12,11 +12,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from utils.image_utils import denormalize_image
 from config import MEAN, STD
+import numpy as np
 
 from config import DEVICE
 
 class ObjectDetectionModel:
     def __init__(self, num_classes, model_path, backbone='resnet50_v2', pretrained=True):
+        if num_classes is None:
+            num_classes = 2
         self.num_classes = num_classes
         self.model_path = model_path
         self.backbone = backbone
@@ -161,16 +164,17 @@ class ObjectDetectionModel:
                     # Save image with bounding boxes
                     self._save_prediction_image(img.cpu(), boxes, scores, labels, output_dir, batch_image_ids[i])
 
-        # Write results to JSON
         with open(output_json, "w") as f:
             json.dump(results, f, indent=4)
 
-        # Perform COCO evaluation
         coco_dt = coco_gt.loadRes(output_json)
         coco_eval = COCOeval(coco_gt, coco_dt, "bbox")
+        coco_eval.params.iouThrs = np.array([0.5])
         coco_eval.evaluate()
         coco_eval.accumulate()
         coco_eval.summarize()
+
+
 
         stats = coco_eval.stats
         return stats

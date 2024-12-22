@@ -2,33 +2,43 @@
 
 Classifying aircraft from satellite imagery using the HRPlanes Dataset. The goal is to identify aircraft and determine where images of the ground may be obscured by flying aircraft.
 
+---
 
 ## Usage
 
 ### Model Predictions
 
-To inference on the model:
+To run inference on the model:
 
-1. Add images to be inferenced in input directory (`data/inference_input/`)
-1. Run the main script using the inference flag:
+1. Add images to be processed in the `data/inference_input/` directory.
+2. Use the provided command-line tool to run inference:
 
 ```bash
-python3 main.py --inference
+run_inference
 ```
+* Output Images: Results will be saved in the (`output/inference/`) directory.
 
 ### Model Training
 
-To train models:
+To train the model:
 
-1. Run the main script using the train flag:
-2. Include the test flag for evaluation metrics.
+1. Use the command-line tool:
 
 ```bash
-python3 main.py --train --test
+train_model
 ```
 
+2. Optionally, run the evaluation after training:
+
+```bash
+evaluate_model
+```
+* Output Images: Results will be saved in the (`output/test/`) directory.
+
 ## Directory Structure
-- **output/**: Stores output images, plots, and other evaluation results.
+* data/inference_input/: Directory for input images for inference.
+* output/: Stores output images and evaluation JSON.
+* config.py: Contains hyperparameters and configurations to tune the model.
 
 ## Dependencies
 Install the required Python packages before running the project:
@@ -41,13 +51,21 @@ pip install -r requirements.txt
 
 * Run all commands in the terminal from the project directory (`Classification-From-Satellite-Imagery/`):
 
-* Before running the project in the terminal, ensure relative file path compatibility by executing the following command:
+* Install the project in editable mode to set it up as a Python package:
 
 ```bash
-export PYTHONPATH=$(pwd)
+pip install -e .
 ```
 
+## Future Work
+
+Future improvements will focus on addressing the model's limitations, such as detecting aircraft at higher altitudes. To achieve this, the RarePlanes dataset will be incorporated to enhance performance and robustness.
+
 ## Citation
-If you use the HRPlanesv2 dataset in your research or project, please cite the following:
+If you use the HRPlanesv2 dataset in your research or project, please cite:
 
 "Unsal, Dilsad. (2022). HRPlanesv2 - High Resolution Satellite Imagery for Aircraft Detection [Data set]. Zenodo. https://doi.org/10.5281/zenodo.7331974"
+
+If you use the RarePlanes dataset in your research or project, please cite:
+
+CosmiQ Works & AI.Reverie. (2020). RarePlanes: A dataset of real and synthetic overhead imagery for object detection. Retrieved from [https://github.com/VisionSystemsInc/RarePlanes](https://github.com/VisionSystemsInc/RarePlanes)

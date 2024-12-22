@@ -15,6 +15,8 @@ TEST_ANNOTATIONS = os.path.join(TEST_DIR, "_annotations.coco.json")
 
 MODEL_DIR = "model_weights/"
 MODEL_PATH = os.path.join(MODEL_DIR, "faster_rcnn.pth")
+# MODEL_PATH = os.path.join(MODEL_DIR, "faster_rcnn_121024.pth")
+
 
 OUTPUT_DIR = "output/"
 TEST_OUTPUT_DIR = os.path.join(OUTPUT_DIR, "test/")
@@ -27,7 +29,7 @@ LEARNING_RATE = 0.0005
 WEIGHT_DECAY = 0.0005
 PATIENCE = 5
 CONFIDENCE_THRESHOLD = 0.9
-INFERENCE_THRESHOLD = 0.5
+INFERENCE_THRESHOLD = 0.7
 
 MEAN = (0.485, 0.456, 0.406)
 STD = (0.229, 0.224, 0.225)

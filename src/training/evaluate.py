@@ -24,5 +24,12 @@ def evaluate_model():
     )
 
     model.load_model()
-    stats = model.evaluate_model(test_loader, test_dataset.coco, EVAL_METRICS_PATH, CONFIDENCE_THRESHOLD)
+    # stats = model.evaluate_model(test_loader, test_dataset.coco, EVAL_METRICS_PATH, CONFIDENCE_THRESHOLD)
+    stats = model.evaluate_model(
+        test_loader,
+        test_dataset.coco,
+        EVAL_METRICS_PATH,
+        CONFIDENCE_THRESHOLD,
+    )
+
     print("Evaluation Stats:", stats)
